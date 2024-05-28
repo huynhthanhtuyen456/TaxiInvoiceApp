@@ -11,23 +11,22 @@ namespace TaxiInvoiceApp.Classes
     public class Invoice
     {
         private string? Number { get; set; }
-        private DateTime ExportedDate { get; set; }
+        public DateTime ExportedDate = DateTime.Now;
         private Customer? Customer { get; set; }
-        protected float TaxRate { get; set; }
+        protected float TaxRate = 0.2F;
     }
 
     public class TaxiInvoice : Invoice, ITaxInvoiceCalculation
     {
         public float TotalKM { get; set; }
-        public decimal OpenDoorPrice { get; set; }
-        public decimal FirstKM2ThirstyPrice { get; set; }
-        public decimal WaitingFee { get; set; }
-        public decimal FromThirstyOneKMPrice { get; set; }
-        private readonly float TaxRate = 0.2F;
+        public required Company Company { get; set; }
+        public int WaitingHours { get; set; }
 
         public decimal SubTotal()
         {
-            decimal subTotal = this.OpenDoorPrice + this.FirstKM2ThirstyPrice * 30 + this.FromThirstyOneKMPrice * (decimal)(this.TotalKM - 30.0) + this.WaitingFee;
+            decimal first2ThirstyKM = this.Company.TaxiPrice.FirstKM2ThirstyPrice * (decimal)this.TotalKM;
+            decimal subTotal = this.Company.TaxiPrice.OpenDoorPrice + first2ThirstyKM + this.WaitingFee();
+            if (this.TotalKM > 30) subTotal += this.Company.TaxiPrice.FromThirstyOneKMPrice * (decimal)(this.TotalKM - 30.0);
             return subTotal;
         }
 
@@ -41,6 +40,12 @@ namespace TaxiInvoiceApp.Classes
         {
             decimal tax = this.SubTotal() * (decimal)this.TaxRate;
             return tax;
+        }
+
+        public decimal WaitingFee()
+        {
+            decimal watingFee = this.Company.TaxiPrice.WaitingFeePerHour * (decimal)this.WaitingHours;
+            return watingFee;
         }
     }
 }
