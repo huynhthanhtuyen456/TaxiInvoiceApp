@@ -79,7 +79,8 @@ namespace TaxiInvoiceApp
             TaxiInvoice taxiInvoice = new TaxiInvoice()
             {
                 TotalKM = float.Parse(this.txbTotalKM.Text),
-                Company = this.CompanyDictionary[this.comboBoxCompany.Text]
+                Company = this.CompanyDictionary[this.comboBoxCompany.Text],
+                WaitingHours = waitingHours,
             };
             ListViewItem listViewItem = new ListViewItem(
                 new string[]
@@ -118,12 +119,12 @@ namespace TaxiInvoiceApp
                 if (this.ms == 100)
                 {
                     this.ms = 0;
-                    this.s += 1;
+                    this.s += 60;
                 }
                 if (this.s == 60)
                 {
                     this.s = 0;
-                    this.m += 1;
+                    this.m += 60;
                 }
                 if (this.m == 60)
                 {
