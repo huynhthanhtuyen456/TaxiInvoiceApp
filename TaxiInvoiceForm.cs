@@ -5,6 +5,8 @@ namespace TaxiInvoiceApp
 {
     public partial class TaxiInvoiceApp : Form
     {
+        // Regex for numbers only
+        // https://stackoverflow.com/questions/273141/regex-for-numbers-only
         private Regex TotalKMPattern = new Regex("^[0-9.]+$");
         public TaxiInvoiceApp()
         {
