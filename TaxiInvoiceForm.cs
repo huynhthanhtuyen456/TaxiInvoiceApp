@@ -5,7 +5,7 @@ namespace TaxiInvoiceApp
 {
     public partial class TaxiInvoiceApp : Form
     {
-        private Regex TotalKMPattern = new Regex(@"[0-9.]$");
+        private Regex TotalKMPattern = new Regex("^[0-9.]+$");
         public TaxiInvoiceApp()
         {
             InitializeComponent();
@@ -16,20 +16,28 @@ namespace TaxiInvoiceApp
             this.listViewTaxiInvoice.Columns.Add("Tax");
             this.listViewTaxiInvoice.Columns.Add("Total");
             this.listViewTaxiInvoice.Font = new Font(listViewTaxiInvoice.Font, FontStyle.Bold);
+            this.btnCalculate.Enabled = false;
         }
 
         private void txbTotalKM_TextChanged(object sender, EventArgs e)
         {
             this.lblTotalKMMsgErr.Text = string.Empty;
+            this.btnCalculate.Enabled = true;
             if (!this.TotalKMPattern.IsMatch(this.txbTotalKM.Text))
             {
                 this.lblTotalKMMsgErr.Text = "Only accepting numbers!";
                 this.lblTotalKMMsgErr.ForeColor = System.Drawing.Color.Red;
+                this.btnCalculate.Enabled = false;
             }
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            if (!this.TotalKMPattern.IsMatch(this.txbTotalKM.Text))
+            {
+                MessageBox.Show("Invalid Total KM value!");
+                return;
+            }
             Random randNumber = new Random();
             // To Calculate Taxi Price, Please refer this link: https://vnpay.vn/cach-tinh-gia-tien-taxi-0qun6kn1r33r
             TaxiInvoice taxiInvoice = new TaxiInvoice()
@@ -51,7 +59,7 @@ namespace TaxiInvoiceApp
                 }
             );
             listViewItem.Font = new Font(listViewTaxiInvoice.Font, FontStyle.Regular);
-            this.listViewTaxiInvoice.Items.Add( listViewItem );
+            this.listViewTaxiInvoice.Items.Add(listViewItem);
             this.listViewTaxiInvoice.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
             this.listViewTaxiInvoice.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
             this.listViewTaxiInvoice.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
