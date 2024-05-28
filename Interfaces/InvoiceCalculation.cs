@@ -8,7 +8,8 @@ namespace TaxiInvoiceApp.Interfaces
 {
     public interface ITaxInvoiceCalculation
     {
-        public decimal Total();
         public decimal SubTotal();
+        public decimal Total();
+        public decimal Tax();
     }
 }

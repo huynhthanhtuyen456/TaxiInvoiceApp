@@ -10,9 +10,9 @@ namespace TaxiInvoiceApp.Classes
 {
     public class Invoice
     {
-        private string Number { get; set; }
+        private string? Number { get; set; }
         private DateTime ExportedDate { get; set; }
-        private Customer Customer { get; set; }
+        private Customer? Customer { get; set; }
         protected float TaxRate { get; set; }
     }
 
@@ -23,18 +23,24 @@ namespace TaxiInvoiceApp.Classes
         public decimal FirstKM2ThirstyPrice { get; set; }
         public decimal WaitingFee { get; set; }
         public decimal FromThirstyOneKMPrice { get; set; }
-
-        public decimal Total ()
-        {
-            decimal taxPay = this.SubTotal() * (decimal)this.TaxRate;
-            decimal total = this.SubTotal() - taxPay;
-            return total;
-        }
+        private readonly float TaxRate = 0.2F;
 
         public decimal SubTotal()
         {
             decimal subTotal = this.OpenDoorPrice + this.FirstKM2ThirstyPrice * 30 + this.FromThirstyOneKMPrice * (decimal)(this.TotalKM - 30.0) + this.WaitingFee;
             return subTotal;
+        }
+
+        public decimal Total ()
+        {
+            decimal total = this.SubTotal() + this.Tax();
+            return total;
+        }
+
+        public decimal Tax()
+        {
+            decimal tax = this.SubTotal() * (decimal)this.TaxRate;
+            return tax;
         }
     }
 }
