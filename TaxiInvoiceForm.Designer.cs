@@ -57,7 +57,7 @@
             TxbTotalKM.Name = "TxbTotalKM";
             TxbTotalKM.Size = new Size(121, 23);
             TxbTotalKM.TabIndex = 1;
-            TxbTotalKM.TextChanged += txbTotalKM_TextChanged;
+            TxbTotalKM.TextChanged += TxbTotalKM_TextChanged;
             // 
             // LblTotalKMMsgErr
             // 

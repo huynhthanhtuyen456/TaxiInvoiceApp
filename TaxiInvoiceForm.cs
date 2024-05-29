@@ -9,8 +9,8 @@ namespace TaxiInvoiceApp
     {
         // Regex for numbers only
         // https://stackoverflow.com/questions/273141/regex-for-numbers-only
-        private Regex TotalKMPattern = new Regex("^[0-9.]+$");
-        private System.Timers.Timer WaitingTimer;
+        private readonly string TotalKMPattern = @"^[0-9.]+$";
+        private readonly System.Timers.Timer WaitingTimer;
         // hour, minute, second, millisecond
         int h, m, s, ms;
         public Dictionary<string, Company> CompanyDictionary = new Dictionary<string, Company>();
@@ -28,7 +28,7 @@ namespace TaxiInvoiceApp
             this.ListViewTaxiInvoice.Font = new Font(ListViewTaxiInvoice.Font, FontStyle.Bold);
             this.BtnCalculate.Enabled = false;
             this.WaitingTimer = new System.Timers.Timer();
-            Company companyMeLinh = new Company()
+            Company companyMeLinh = new()
             {
                 Name = "Me Linh Corporation",
                 TaxiPrice = new TaxiCompanyPrice()
@@ -39,7 +39,7 @@ namespace TaxiInvoiceApp
                     WaitingFeePerHour = 45000
                 }
             };
-            Company companyG7 = new Company()
+            Company companyG7 = new()
             {
                 Name = "G7 Company",
                 TaxiPrice = new TaxiCompanyPrice()
@@ -56,18 +56,6 @@ namespace TaxiInvoiceApp
             this.ComboBoxCompany.Items.Add(companyG7.Name);
             this.ComboBoxCompany.SelectedItem = companyMeLinh.Name;
             this.ComboBoxCompany.SelectedIndex = 0;
-        }
-
-        private void txbTotalKM_TextChanged(object sender, EventArgs e)
-        {
-            this.LblTotalKMMsgErr.Text = string.Empty;
-            this.BtnCalculate.Enabled = true;
-            if (!this.TotalKMPattern.IsMatch(this.TxbTotalKM.Text))
-            {
-                this.LblTotalKMMsgErr.Text = "Only accepting numbers!";
-                this.LblTotalKMMsgErr.ForeColor = System.Drawing.Color.Red;
-                this.BtnCalculate.Enabled = false;
-            }
         }
 
         private void TaxiInvoiceApp_Load(object sender, EventArgs e)
@@ -120,11 +108,11 @@ namespace TaxiInvoiceApp
 
         private void BtnCalculate_Click(object sender, EventArgs e)
         {
-            Random randNumber = new Random();
+            Random randNumber = new();
             // To Calculate Taxi Price, Please refer this link: https://vnpay.vn/cach-tinh-gia-tien-taxi-0qun6kn1r33r
             string[] waitingTime = this.LblWaitingTimer.Text.Split(":");
             int waitingHours = int.Parse(waitingTime[0]);
-            TaxiInvoice taxiInvoice = new TaxiInvoice()
+            TaxiInvoice taxiInvoice = new()
             {
                 TotalKM = float.Parse(this.TxbTotalKM.Text),
                 Company = this.CompanyDictionary[this.ComboBoxCompany.Text],
@@ -150,6 +138,19 @@ namespace TaxiInvoiceApp
             this.ListViewTaxiInvoice.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
             this.ListViewTaxiInvoice.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
             this.ListViewTaxiInvoice.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void TxbTotalKM_TextChanged(object sender, EventArgs e)
+        {
+            this.LblTotalKMMsgErr.Text = string.Empty;
+            this.BtnCalculate.Enabled = true;
+            Regex totalKMRegex = new(this.TotalKMPattern);
+            if (!totalKMRegex.IsMatch(this.TxbTotalKM.Text))
+            {
+                this.LblTotalKMMsgErr.Text = "Only accepting numbers!";
+                this.LblTotalKMMsgErr.ForeColor = System.Drawing.Color.Red;
+                this.BtnCalculate.Enabled = false;
+            }
         }
     }
 }
