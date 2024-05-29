@@ -79,9 +79,10 @@
             // 
             // ListViewTaxiInvoice
             // 
+            ListViewTaxiInvoice.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ListViewTaxiInvoice.Location = new Point(12, 99);
             ListViewTaxiInvoice.Name = "ListViewTaxiInvoice";
-            ListViewTaxiInvoice.Size = new Size(776, 192);
+            ListViewTaxiInvoice.Size = new Size(606, 243);
             ListViewTaxiInvoice.TabIndex = 4;
             ListViewTaxiInvoice.UseCompatibleStateImageBehavior = false;
             ListViewTaxiInvoice.View = View.Details;
@@ -105,8 +106,9 @@
             // 
             // LblWaitingTime
             // 
+            LblWaitingTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LblWaitingTime.AutoSize = true;
-            LblWaitingTime.Location = new Point(410, 9);
+            LblWaitingTime.Location = new Point(240, 9);
             LblWaitingTime.Name = "LblWaitingTime";
             LblWaitingTime.Size = new Size(80, 15);
             LblWaitingTime.TabIndex = 7;
@@ -114,8 +116,9 @@
             // 
             // LblWaitingTimer
             // 
+            LblWaitingTimer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LblWaitingTimer.AutoSize = true;
-            LblWaitingTimer.Location = new Point(496, 9);
+            LblWaitingTimer.Location = new Point(326, 9);
             LblWaitingTimer.Name = "LblWaitingTimer";
             LblWaitingTimer.Size = new Size(49, 15);
             LblWaitingTimer.TabIndex = 9;
@@ -123,9 +126,10 @@
             // 
             // BtnStartTimer
             // 
+            BtnStartTimer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnStartTimer.BackColor = SystemColors.Window;
             BtnStartTimer.ForeColor = SystemColors.WindowText;
-            BtnStartTimer.Location = new Point(410, 33);
+            BtnStartTimer.Location = new Point(240, 33);
             BtnStartTimer.Name = "BtnStartTimer";
             BtnStartTimer.Size = new Size(75, 23);
             BtnStartTimer.TabIndex = 10;
@@ -135,7 +139,8 @@
             // 
             // BtnStopTimer
             // 
-            BtnStopTimer.Location = new Point(491, 33);
+            BtnStopTimer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnStopTimer.Location = new Point(321, 33);
             BtnStopTimer.Name = "BtnStopTimer";
             BtnStopTimer.Size = new Size(75, 23);
             BtnStopTimer.TabIndex = 11;
@@ -145,7 +150,8 @@
             // 
             // BtnResetTimer
             // 
-            BtnResetTimer.Location = new Point(572, 33);
+            BtnResetTimer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnResetTimer.Location = new Point(402, 33);
             BtnResetTimer.Name = "BtnResetTimer";
             BtnResetTimer.Size = new Size(75, 23);
             BtnResetTimer.TabIndex = 12;
@@ -157,7 +163,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 308);
+            ClientSize = new Size(630, 359);
             Controls.Add(BtnResetTimer);
             Controls.Add(BtnStopTimer);
             Controls.Add(BtnStartTimer);
@@ -170,6 +176,7 @@
             Controls.Add(LblTotalKMMsgErr);
             Controls.Add(TxbTotalKM);
             Controls.Add(LblTotalKM);
+            MinimumSize = new Size(646, 398);
             Name = "TaxiInvoiceApp";
             Text = "TaxiInvoiceApp";
             Load += TaxiInvoiceApp_Load;
