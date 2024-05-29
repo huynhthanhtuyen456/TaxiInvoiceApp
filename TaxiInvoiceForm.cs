@@ -119,12 +119,12 @@ namespace TaxiInvoiceApp
                 if (this.ms == 100)
                 {
                     this.ms = 0;
-                    this.s += 60;
+                    this.s += 1;
                 }
                 if (this.s == 60)
                 {
                     this.s = 0;
-                    this.m += 60;
+                    this.m += 1;
                 }
                 if (this.m == 60)
                 {
