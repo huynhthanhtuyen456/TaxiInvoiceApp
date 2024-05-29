@@ -28,98 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblTotalKM = new Label();
-            txbTotalKM = new TextBox();
-            lblTotalKMMsgErr = new Label();
-            btnCalculate = new Button();
-            listViewTaxiInvoice = new ListView();
-            comboBoxCompany = new ComboBox();
-            lblTaxiCompany = new Label();
-            lblWaitingTime = new Label();
-            lblWaitingTimer = new Label();
+            LblTotalKM = new Label();
+            TxbTotalKM = new TextBox();
+            LblTotalKMMsgErr = new Label();
+            BtnCalculate = new Button();
+            ListViewTaxiInvoice = new ListView();
+            ComboBoxCompany = new ComboBox();
+            LblTaxiCompany = new Label();
+            LblWaitingTime = new Label();
+            LblWaitingTimer = new Label();
             BtnStartTimer = new Button();
             BtnStopTimer = new Button();
             BtnResetTimer = new Button();
             SuspendLayout();
             // 
-            // lblTotalKM
+            // LblTotalKM
             // 
-            lblTotalKM.AutoSize = true;
-            lblTotalKM.Location = new Point(12, 20);
-            lblTotalKM.Name = "lblTotalKM";
-            lblTotalKM.Size = new Size(56, 15);
-            lblTotalKM.TabIndex = 0;
-            lblTotalKM.Text = "Total KM:";
+            LblTotalKM.AutoSize = true;
+            LblTotalKM.Location = new Point(12, 20);
+            LblTotalKM.Name = "LblTotalKM";
+            LblTotalKM.Size = new Size(56, 15);
+            LblTotalKM.TabIndex = 0;
+            LblTotalKM.Text = "Total KM:";
             // 
-            // txbTotalKM
+            // TxbTotalKM
             // 
-            txbTotalKM.Location = new Point(103, 12);
-            txbTotalKM.Name = "txbTotalKM";
-            txbTotalKM.Size = new Size(121, 23);
-            txbTotalKM.TabIndex = 1;
-            txbTotalKM.TextChanged += txbTotalKM_TextChanged;
+            TxbTotalKM.Location = new Point(103, 12);
+            TxbTotalKM.Name = "TxbTotalKM";
+            TxbTotalKM.Size = new Size(121, 23);
+            TxbTotalKM.TabIndex = 1;
+            TxbTotalKM.TextChanged += txbTotalKM_TextChanged;
             // 
-            // lblTotalKMMsgErr
+            // LblTotalKMMsgErr
             // 
-            lblTotalKMMsgErr.AutoSize = true;
-            lblTotalKMMsgErr.Location = new Point(230, 15);
-            lblTotalKMMsgErr.Name = "lblTotalKMMsgErr";
-            lblTotalKMMsgErr.Size = new Size(0, 15);
-            lblTotalKMMsgErr.TabIndex = 2;
+            LblTotalKMMsgErr.AutoSize = true;
+            LblTotalKMMsgErr.Location = new Point(230, 15);
+            LblTotalKMMsgErr.Name = "LblTotalKMMsgErr";
+            LblTotalKMMsgErr.Size = new Size(0, 15);
+            LblTotalKMMsgErr.TabIndex = 2;
             // 
-            // btnCalculate
+            // BtnCalculate
             // 
-            btnCalculate.Location = new Point(103, 70);
-            btnCalculate.Name = "btnCalculate";
-            btnCalculate.Size = new Size(121, 23);
-            btnCalculate.TabIndex = 3;
-            btnCalculate.Text = "Calculate";
-            btnCalculate.UseVisualStyleBackColor = true;
-            btnCalculate.Click += BtnCalculate_Click;
+            BtnCalculate.Location = new Point(103, 70);
+            BtnCalculate.Name = "BtnCalculate";
+            BtnCalculate.Size = new Size(121, 23);
+            BtnCalculate.TabIndex = 3;
+            BtnCalculate.Text = "Calculate";
+            BtnCalculate.UseVisualStyleBackColor = true;
+            BtnCalculate.Click += BtnCalculate_Click;
             // 
-            // listViewTaxiInvoice
+            // ListViewTaxiInvoice
             // 
-            listViewTaxiInvoice.Location = new Point(12, 99);
-            listViewTaxiInvoice.Name = "listViewTaxiInvoice";
-            listViewTaxiInvoice.Size = new Size(776, 192);
-            listViewTaxiInvoice.TabIndex = 4;
-            listViewTaxiInvoice.UseCompatibleStateImageBehavior = false;
-            listViewTaxiInvoice.View = View.Details;
+            ListViewTaxiInvoice.Location = new Point(12, 99);
+            ListViewTaxiInvoice.Name = "ListViewTaxiInvoice";
+            ListViewTaxiInvoice.Size = new Size(776, 192);
+            ListViewTaxiInvoice.TabIndex = 4;
+            ListViewTaxiInvoice.UseCompatibleStateImageBehavior = false;
+            ListViewTaxiInvoice.View = View.Details;
             // 
-            // comboBoxCompany
+            // ComboBoxCompany
             // 
-            comboBoxCompany.FormattingEnabled = true;
-            comboBoxCompany.Location = new Point(103, 41);
-            comboBoxCompany.Name = "comboBoxCompany";
-            comboBoxCompany.Size = new Size(121, 23);
-            comboBoxCompany.TabIndex = 5;
+            ComboBoxCompany.FormattingEnabled = true;
+            ComboBoxCompany.Location = new Point(103, 41);
+            ComboBoxCompany.Name = "ComboBoxCompany";
+            ComboBoxCompany.Size = new Size(121, 23);
+            ComboBoxCompany.TabIndex = 5;
             // 
-            // lblTaxiCompany
+            // LblTaxiCompany
             // 
-            lblTaxiCompany.AutoSize = true;
-            lblTaxiCompany.Location = new Point(12, 49);
-            lblTaxiCompany.Name = "lblTaxiCompany";
-            lblTaxiCompany.Size = new Size(85, 15);
-            lblTaxiCompany.TabIndex = 6;
-            lblTaxiCompany.Text = "Taxi Company:";
+            LblTaxiCompany.AutoSize = true;
+            LblTaxiCompany.Location = new Point(12, 49);
+            LblTaxiCompany.Name = "LblTaxiCompany";
+            LblTaxiCompany.Size = new Size(85, 15);
+            LblTaxiCompany.TabIndex = 6;
+            LblTaxiCompany.Text = "Taxi Company:";
             // 
-            // lblWaitingTime
+            // LblWaitingTime
             // 
-            lblWaitingTime.AutoSize = true;
-            lblWaitingTime.Location = new Point(410, 9);
-            lblWaitingTime.Name = "lblWaitingTime";
-            lblWaitingTime.Size = new Size(80, 15);
-            lblWaitingTime.TabIndex = 7;
-            lblWaitingTime.Text = "Waiting Time:";
+            LblWaitingTime.AutoSize = true;
+            LblWaitingTime.Location = new Point(410, 9);
+            LblWaitingTime.Name = "LblWaitingTime";
+            LblWaitingTime.Size = new Size(80, 15);
+            LblWaitingTime.TabIndex = 7;
+            LblWaitingTime.Text = "Waiting Time:";
             // 
-            // lblWaitingTimer
+            // LblWaitingTimer
             // 
-            lblWaitingTimer.AutoSize = true;
-            lblWaitingTimer.Location = new Point(496, 9);
-            lblWaitingTimer.Name = "lblWaitingTimer";
-            lblWaitingTimer.Size = new Size(49, 15);
-            lblWaitingTimer.TabIndex = 9;
-            lblWaitingTimer.Text = "00:00:00";
+            LblWaitingTimer.AutoSize = true;
+            LblWaitingTimer.Location = new Point(496, 9);
+            LblWaitingTimer.Name = "LblWaitingTimer";
+            LblWaitingTimer.Size = new Size(49, 15);
+            LblWaitingTimer.TabIndex = 9;
+            LblWaitingTimer.Text = "00:00:00";
             // 
             // BtnStartTimer
             // 
@@ -161,15 +161,15 @@
             Controls.Add(BtnResetTimer);
             Controls.Add(BtnStopTimer);
             Controls.Add(BtnStartTimer);
-            Controls.Add(lblWaitingTimer);
-            Controls.Add(lblWaitingTime);
-            Controls.Add(lblTaxiCompany);
-            Controls.Add(comboBoxCompany);
-            Controls.Add(listViewTaxiInvoice);
-            Controls.Add(btnCalculate);
-            Controls.Add(lblTotalKMMsgErr);
-            Controls.Add(txbTotalKM);
-            Controls.Add(lblTotalKM);
+            Controls.Add(LblWaitingTimer);
+            Controls.Add(LblWaitingTime);
+            Controls.Add(LblTaxiCompany);
+            Controls.Add(ComboBoxCompany);
+            Controls.Add(ListViewTaxiInvoice);
+            Controls.Add(BtnCalculate);
+            Controls.Add(LblTotalKMMsgErr);
+            Controls.Add(TxbTotalKM);
+            Controls.Add(LblTotalKM);
             Name = "TaxiInvoiceApp";
             Text = "TaxiInvoiceApp";
             Load += TaxiInvoiceApp_Load;
@@ -179,15 +179,15 @@
 
         #endregion
 
-        private Label lblTotalKM;
-        private TextBox txbTotalKM;
-        private Label lblTotalKMMsgErr;
-        private Button btnCalculate;
-        private ListView listViewTaxiInvoice;
-        private ComboBox comboBoxCompany;
-        private Label lblTaxiCompany;
-        private Label lblWaitingTime;
-        private Label lblWaitingTimer;
+        private Label LblTotalKM;
+        private TextBox TxbTotalKM;
+        private Label LblTotalKMMsgErr;
+        private Button BtnCalculate;
+        private ListView ListViewTaxiInvoice;
+        private ComboBox ComboBoxCompany;
+        private Label LblTaxiCompany;
+        private Label LblWaitingTime;
+        private Label LblWaitingTimer;
         private Button BtnStartTimer;
         private Button BtnStopTimer;
         private Button BtnResetTimer;

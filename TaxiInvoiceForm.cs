@@ -17,16 +17,16 @@ namespace TaxiInvoiceApp
         public TaxiInvoiceApp()
         {
             InitializeComponent();
-            this.lblTotalKMMsgErr.Text = string.Empty;
-            this.listViewTaxiInvoice.Columns.Add("Number");
-            this.listViewTaxiInvoice.Columns.Add("Total KM");
-            this.listViewTaxiInvoice.Columns.Add("Waiting Fee");
-            this.listViewTaxiInvoice.Columns.Add("Sub Total");
-            this.listViewTaxiInvoice.Columns.Add("Tax");
-            this.listViewTaxiInvoice.Columns.Add("Total");
-            this.listViewTaxiInvoice.Columns.Add("Exported Date");
-            this.listViewTaxiInvoice.Font = new Font(listViewTaxiInvoice.Font, FontStyle.Bold);
-            this.btnCalculate.Enabled = false;
+            this.LblTotalKMMsgErr.Text = string.Empty;
+            this.ListViewTaxiInvoice.Columns.Add("Number");
+            this.ListViewTaxiInvoice.Columns.Add("Total KM");
+            this.ListViewTaxiInvoice.Columns.Add("Waiting Fee");
+            this.ListViewTaxiInvoice.Columns.Add("Sub Total");
+            this.ListViewTaxiInvoice.Columns.Add("Tax");
+            this.ListViewTaxiInvoice.Columns.Add("Total");
+            this.ListViewTaxiInvoice.Columns.Add("Exported Date");
+            this.ListViewTaxiInvoice.Font = new Font(ListViewTaxiInvoice.Font, FontStyle.Bold);
+            this.BtnCalculate.Enabled = false;
             this.WaitingTimer = new System.Timers.Timer();
             Company companyMeLinh = new Company()
             {
@@ -52,21 +52,21 @@ namespace TaxiInvoiceApp
             };
             this.CompanyDictionary.Add(companyMeLinh.Name, companyMeLinh);
             this.CompanyDictionary.Add(companyG7.Name, companyG7);
-            this.comboBoxCompany.Items.Add(companyMeLinh.Name);
-            this.comboBoxCompany.Items.Add(companyG7.Name);
-            this.comboBoxCompany.SelectedItem = companyMeLinh.Name;
-            this.comboBoxCompany.SelectedIndex = 0;
+            this.ComboBoxCompany.Items.Add(companyMeLinh.Name);
+            this.ComboBoxCompany.Items.Add(companyG7.Name);
+            this.ComboBoxCompany.SelectedItem = companyMeLinh.Name;
+            this.ComboBoxCompany.SelectedIndex = 0;
         }
 
         private void txbTotalKM_TextChanged(object sender, EventArgs e)
         {
-            this.lblTotalKMMsgErr.Text = string.Empty;
-            this.btnCalculate.Enabled = true;
-            if (!this.TotalKMPattern.IsMatch(this.txbTotalKM.Text))
+            this.LblTotalKMMsgErr.Text = string.Empty;
+            this.BtnCalculate.Enabled = true;
+            if (!this.TotalKMPattern.IsMatch(this.TxbTotalKM.Text))
             {
-                this.lblTotalKMMsgErr.Text = "Only accepting numbers!";
-                this.lblTotalKMMsgErr.ForeColor = System.Drawing.Color.Red;
-                this.btnCalculate.Enabled = false;
+                this.LblTotalKMMsgErr.Text = "Only accepting numbers!";
+                this.LblTotalKMMsgErr.ForeColor = System.Drawing.Color.Red;
+                this.BtnCalculate.Enabled = false;
             }
         }
 
@@ -97,7 +97,7 @@ namespace TaxiInvoiceApp
                     this.m = 0;
                     this.h += 1;
                 }
-                this.lblWaitingTimer.Text = $"{this.h.ToString().ToString().PadLeft(2, '0')}:{this.m.ToString().ToString().PadLeft(2, '0')}:{this.s.ToString().ToString().PadLeft(2, '0')}";
+                this.LblWaitingTimer.Text = $"{this.h.ToString().ToString().PadLeft(2, '0')}:{this.m.ToString().ToString().PadLeft(2, '0')}:{this.s.ToString().ToString().PadLeft(2, '0')}";
             }));
         }
 
@@ -115,19 +115,19 @@ namespace TaxiInvoiceApp
         {
             this.WaitingTimer.Stop();
             this.h = this.m = this.s = this.ms = 0;
-            this.lblWaitingTimer.Text = "00:00:00";
+            this.LblWaitingTimer.Text = "00:00:00";
         }
 
         private void BtnCalculate_Click(object sender, EventArgs e)
         {
             Random randNumber = new Random();
             // To Calculate Taxi Price, Please refer this link: https://vnpay.vn/cach-tinh-gia-tien-taxi-0qun6kn1r33r
-            string[] waitingTime = this.lblWaitingTimer.Text.Split(":");
+            string[] waitingTime = this.LblWaitingTimer.Text.Split(":");
             int waitingHours = int.Parse(waitingTime[0]);
             TaxiInvoice taxiInvoice = new TaxiInvoice()
             {
-                TotalKM = float.Parse(this.txbTotalKM.Text),
-                Company = this.CompanyDictionary[this.comboBoxCompany.Text],
+                TotalKM = float.Parse(this.TxbTotalKM.Text),
+                Company = this.CompanyDictionary[this.ComboBoxCompany.Text],
                 WaitingHours = waitingHours,
             };
             ListViewItem listViewItem = new ListViewItem(
@@ -142,14 +142,14 @@ namespace TaxiInvoiceApp
                     taxiInvoice.ExportedDate.ToString("dd/MM/yyyy")
                 }
             );
-            listViewItem.Font = new Font(listViewTaxiInvoice.Font, FontStyle.Regular);
-            this.listViewTaxiInvoice.Items.Add(listViewItem);
-            this.listViewTaxiInvoice.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
-            this.listViewTaxiInvoice.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
-            this.listViewTaxiInvoice.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.listViewTaxiInvoice.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.listViewTaxiInvoice.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
-            this.listViewTaxiInvoice.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewItem.Font = new Font(ListViewTaxiInvoice.Font, FontStyle.Regular);
+            this.ListViewTaxiInvoice.Items.Add(listViewItem);
+            this.ListViewTaxiInvoice.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.ListViewTaxiInvoice.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.ListViewTaxiInvoice.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.ListViewTaxiInvoice.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.ListViewTaxiInvoice.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.ListViewTaxiInvoice.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }
