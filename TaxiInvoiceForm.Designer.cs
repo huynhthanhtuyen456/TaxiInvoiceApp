@@ -40,6 +40,7 @@
             BtnStartTimer = new Button();
             BtnStopTimer = new Button();
             BtnResetTimer = new Button();
+            ListViewTaxiPrice = new ListView();
             SuspendLayout();
             // 
             // LblTotalKM
@@ -69,7 +70,7 @@
             // 
             // BtnCalculate
             // 
-            BtnCalculate.Location = new Point(103, 70);
+            BtnCalculate.Location = new Point(103, 75);
             BtnCalculate.Name = "BtnCalculate";
             BtnCalculate.Size = new Size(121, 23);
             BtnCalculate.TabIndex = 3;
@@ -80,9 +81,9 @@
             // ListViewTaxiInvoice
             // 
             ListViewTaxiInvoice.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            ListViewTaxiInvoice.Location = new Point(12, 99);
+            ListViewTaxiInvoice.Location = new Point(12, 242);
             ListViewTaxiInvoice.Name = "ListViewTaxiInvoice";
-            ListViewTaxiInvoice.Size = new Size(606, 243);
+            ListViewTaxiInvoice.Size = new Size(606, 105);
             ListViewTaxiInvoice.TabIndex = 4;
             ListViewTaxiInvoice.UseCompatibleStateImageBehavior = false;
             ListViewTaxiInvoice.View = View.Details;
@@ -159,11 +160,22 @@
             BtnResetTimer.UseVisualStyleBackColor = true;
             BtnResetTimer.Click += BtnResetTimer_Click;
             // 
+            // ListViewTaxiPrice
+            // 
+            ListViewTaxiPrice.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            ListViewTaxiPrice.Location = new Point(12, 104);
+            ListViewTaxiPrice.Name = "ListViewTaxiPrice";
+            ListViewTaxiPrice.Size = new Size(606, 118);
+            ListViewTaxiPrice.TabIndex = 14;
+            ListViewTaxiPrice.UseCompatibleStateImageBehavior = false;
+            ListViewTaxiPrice.View = View.Details;
+            // 
             // TaxiInvoiceApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(630, 359);
+            Controls.Add(ListViewTaxiPrice);
             Controls.Add(BtnResetTimer);
             Controls.Add(BtnStopTimer);
             Controls.Add(BtnStartTimer);
@@ -198,5 +210,6 @@
         private Button BtnStartTimer;
         private Button BtnStopTimer;
         private Button BtnResetTimer;
+        private ListView ListViewTaxiPrice;
     }
 }

@@ -26,6 +26,12 @@ namespace TaxiInvoiceApp
             this.ListViewTaxiInvoice.Columns.Add("Total");
             this.ListViewTaxiInvoice.Columns.Add("Exported Date");
             this.ListViewTaxiInvoice.Font = new Font(ListViewTaxiInvoice.Font, FontStyle.Bold);
+            this.ListViewTaxiPrice.Columns.Add("Company");
+            this.ListViewTaxiPrice.Columns.Add("Opening Door Price");
+            this.ListViewTaxiPrice.Columns.Add("From 1KM To 30KM");
+            this.ListViewTaxiPrice.Columns.Add("Start From 31KM");
+            this.ListViewTaxiPrice.Columns.Add("Waiting Fee Per Hour");
+            this.ListViewTaxiPrice.Font = new Font(ListViewTaxiPrice.Font, FontStyle.Bold);
             this.BtnCalculate.Enabled = false;
             this.WaitingTimer = new System.Timers.Timer();
             Company companyMeLinh = new()
@@ -56,6 +62,27 @@ namespace TaxiInvoiceApp
             this.ComboBoxCompany.Items.Add(companyG7.Name);
             this.ComboBoxCompany.SelectedItem = companyMeLinh.Name;
             this.ComboBoxCompany.SelectedIndex = 0;
+
+            foreach(KeyValuePair<string, Company> company in this.CompanyDictionary)
+            {
+                ListViewItem listCompanyItem = new ListViewItem(
+                    new string[]
+                    {
+                        company.Key,
+                        $"{company.Value.TaxiPrice.OpenDoorPrice.ToString("#,##0")} VND",
+                        $"{company.Value.TaxiPrice.FirstKM2ThirstyPrice.ToString("#,##0")} VND",
+                        $"{company.Value.TaxiPrice.FromThirstyOneKMPrice.ToString("#,##0")} VND",
+                        $"{company.Value.TaxiPrice.WaitingFeePerHour.ToString("#,##0")} VND"
+                    }
+                );
+                listCompanyItem.Font = new Font(ListViewTaxiInvoice.Font, FontStyle.Regular);
+                this.ListViewTaxiPrice.Items.Add(listCompanyItem);
+                this.ListViewTaxiPrice.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
+                this.ListViewTaxiPrice.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
+                this.ListViewTaxiPrice.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+                this.ListViewTaxiPrice.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.HeaderSize);
+                this.ListViewTaxiPrice.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
 
         private void TaxiInvoiceApp_Load(object sender, EventArgs e)
