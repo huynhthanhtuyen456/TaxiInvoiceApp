@@ -13,7 +13,7 @@ namespace TaxiInvoiceApp
         private System.Timers.Timer WaitingTimer;
         // hour, minute, second, millisecond
         int h, m, s, ms;
-        Dictionary<string, Company> CompanyDictionary = new Dictionary<string, Company>();
+        public Dictionary<string, Company> CompanyDictionary = new Dictionary<string, Company>();
         public TaxiInvoiceApp()
         {
             InitializeComponent();
@@ -70,40 +70,6 @@ namespace TaxiInvoiceApp
             }
         }
 
-        private void btnCalculate_Click(object sender, EventArgs e)
-        {
-            Random randNumber = new Random();
-            // To Calculate Taxi Price, Please refer this link: https://vnpay.vn/cach-tinh-gia-tien-taxi-0qun6kn1r33r
-            string[] waitingTime = this.lblWaitingTimer.Text.Split(":");
-            int waitingHours = int.Parse(waitingTime[0]);
-            TaxiInvoice taxiInvoice = new TaxiInvoice()
-            {
-                TotalKM = float.Parse(this.txbTotalKM.Text),
-                Company = this.CompanyDictionary[this.comboBoxCompany.Text],
-                WaitingHours = waitingHours,
-            };
-            ListViewItem listViewItem = new ListViewItem(
-                new string[]
-                {
-                    $"ID{randNumber.Next(1, 1000)}",
-                    taxiInvoice.TotalKM.ToString("#,##0.00"),
-                    taxiInvoice.WaitingFee().ToString("#,##0"),
-                    $"{taxiInvoice.SubTotal().ToString("#,##0")} VND",
-                    $"{taxiInvoice.Tax().ToString("#,##0")} VND",
-                    $"{taxiInvoice.Total().ToString("#,##0")} VND",
-                    taxiInvoice.ExportedDate.ToString("dd/MM/yyyy")
-                }
-            );
-            listViewItem.Font = new Font(listViewTaxiInvoice.Font, FontStyle.Regular);
-            this.listViewTaxiInvoice.Items.Add(listViewItem);
-            this.listViewTaxiInvoice.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
-            this.listViewTaxiInvoice.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
-            this.listViewTaxiInvoice.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.listViewTaxiInvoice.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.listViewTaxiInvoice.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
-            this.listViewTaxiInvoice.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
         private void TaxiInvoiceApp_Load(object sender, EventArgs e)
         {
             // Default 100ms
@@ -135,21 +101,55 @@ namespace TaxiInvoiceApp
             }));
         }
 
-        private void btnStartTimer_Click(object sender, EventArgs e)
+        private void BtnStopTimer_Click(object sender, EventArgs e)
+        {
+            this.WaitingTimer.Stop();
+        }
+
+        private void BtnStartTimer_Click(object sender, EventArgs e)
         {
             this.WaitingTimer.Start();
         }
 
-        private void btnStopTimer_Click(object sender, EventArgs e)
-        {
-            this.WaitingTimer.Stop();
-        }
-
-        private void btnResetTimer_Click(object sender, EventArgs e)
+        private void BtnResetTimer_Click(object sender, EventArgs e)
         {
             this.WaitingTimer.Stop();
             this.h = this.m = this.s = this.ms = 0;
             this.lblWaitingTimer.Text = "00:00:00";
+        }
+
+        private void BtnCalculate_Click(object sender, EventArgs e)
+        {
+            Random randNumber = new Random();
+            // To Calculate Taxi Price, Please refer this link: https://vnpay.vn/cach-tinh-gia-tien-taxi-0qun6kn1r33r
+            string[] waitingTime = this.lblWaitingTimer.Text.Split(":");
+            int waitingHours = int.Parse(waitingTime[0]);
+            TaxiInvoice taxiInvoice = new TaxiInvoice()
+            {
+                TotalKM = float.Parse(this.txbTotalKM.Text),
+                Company = this.CompanyDictionary[this.comboBoxCompany.Text],
+                WaitingHours = waitingHours,
+            };
+            ListViewItem listViewItem = new ListViewItem(
+                new string[]
+                {
+                    $"ID{randNumber.Next(1, 1000)}",
+                    taxiInvoice.TotalKM.ToString("#,##0.00"),
+                    taxiInvoice.WaitingFee().ToString("#,##0"),
+                    $"{taxiInvoice.SubTotal().ToString("#,##0")} VND",
+                    $"{taxiInvoice.Tax().ToString("#,##0")} VND",
+                    $"{taxiInvoice.Total().ToString("#,##0")} VND",
+                    taxiInvoice.ExportedDate.ToString("dd/MM/yyyy")
+                }
+            );
+            listViewItem.Font = new Font(listViewTaxiInvoice.Font, FontStyle.Regular);
+            this.listViewTaxiInvoice.Items.Add(listViewItem);
+            this.listViewTaxiInvoice.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.listViewTaxiInvoice.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.listViewTaxiInvoice.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.listViewTaxiInvoice.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.listViewTaxiInvoice.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.listViewTaxiInvoice.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }

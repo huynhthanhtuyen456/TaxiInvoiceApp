@@ -37,9 +37,9 @@
             lblTaxiCompany = new Label();
             lblWaitingTime = new Label();
             lblWaitingTimer = new Label();
-            btnStartTimer = new Button();
-            btnStopTimer = new Button();
-            btnResetTimer = new Button();
+            BtnStartTimer = new Button();
+            BtnStopTimer = new Button();
+            BtnResetTimer = new Button();
             SuspendLayout();
             // 
             // lblTotalKM
@@ -75,7 +75,7 @@
             btnCalculate.TabIndex = 3;
             btnCalculate.Text = "Calculate";
             btnCalculate.UseVisualStyleBackColor = true;
-            btnCalculate.Click += btnCalculate_Click;
+            btnCalculate.Click += BtnCalculate_Click;
             // 
             // listViewTaxiInvoice
             // 
@@ -121,46 +121,46 @@
             lblWaitingTimer.TabIndex = 9;
             lblWaitingTimer.Text = "00:00:00";
             // 
-            // btnStartTimer
+            // BtnStartTimer
             // 
-            btnStartTimer.BackColor = SystemColors.Window;
-            btnStartTimer.ForeColor = SystemColors.WindowText;
-            btnStartTimer.Location = new Point(410, 33);
-            btnStartTimer.Name = "btnStartTimer";
-            btnStartTimer.Size = new Size(75, 23);
-            btnStartTimer.TabIndex = 10;
-            btnStartTimer.Text = "Start";
-            btnStartTimer.UseVisualStyleBackColor = false;
-            btnStartTimer.Click += btnStartTimer_Click;
+            BtnStartTimer.BackColor = SystemColors.Window;
+            BtnStartTimer.ForeColor = SystemColors.WindowText;
+            BtnStartTimer.Location = new Point(410, 33);
+            BtnStartTimer.Name = "BtnStartTimer";
+            BtnStartTimer.Size = new Size(75, 23);
+            BtnStartTimer.TabIndex = 10;
+            BtnStartTimer.Text = "Start";
+            BtnStartTimer.UseVisualStyleBackColor = false;
+            BtnStartTimer.Click += BtnStartTimer_Click;
             // 
-            // btnStopTimer
+            // BtnStopTimer
             // 
-            btnStopTimer.Location = new Point(491, 33);
-            btnStopTimer.Name = "btnStopTimer";
-            btnStopTimer.Size = new Size(75, 23);
-            btnStopTimer.TabIndex = 11;
-            btnStopTimer.Text = "Stop";
-            btnStopTimer.UseVisualStyleBackColor = true;
-            btnStopTimer.Click += btnStopTimer_Click;
+            BtnStopTimer.Location = new Point(491, 33);
+            BtnStopTimer.Name = "BtnStopTimer";
+            BtnStopTimer.Size = new Size(75, 23);
+            BtnStopTimer.TabIndex = 11;
+            BtnStopTimer.Text = "Stop";
+            BtnStopTimer.UseVisualStyleBackColor = true;
+            BtnStopTimer.Click += BtnStopTimer_Click;
             // 
-            // btnResetTimer
+            // BtnResetTimer
             // 
-            btnResetTimer.Location = new Point(572, 33);
-            btnResetTimer.Name = "btnResetTimer";
-            btnResetTimer.Size = new Size(75, 23);
-            btnResetTimer.TabIndex = 12;
-            btnResetTimer.Text = "Reset";
-            btnResetTimer.UseVisualStyleBackColor = true;
-            btnResetTimer.Click += btnResetTimer_Click;
+            BtnResetTimer.Location = new Point(572, 33);
+            BtnResetTimer.Name = "BtnResetTimer";
+            BtnResetTimer.Size = new Size(75, 23);
+            BtnResetTimer.TabIndex = 12;
+            BtnResetTimer.Text = "Reset";
+            BtnResetTimer.UseVisualStyleBackColor = true;
+            BtnResetTimer.Click += BtnResetTimer_Click;
             // 
             // TaxiInvoiceApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 308);
-            Controls.Add(btnResetTimer);
-            Controls.Add(btnStopTimer);
-            Controls.Add(btnStartTimer);
+            Controls.Add(BtnResetTimer);
+            Controls.Add(BtnStopTimer);
+            Controls.Add(BtnStartTimer);
             Controls.Add(lblWaitingTimer);
             Controls.Add(lblWaitingTime);
             Controls.Add(lblTaxiCompany);
@@ -188,8 +188,8 @@
         private Label lblTaxiCompany;
         private Label lblWaitingTime;
         private Label lblWaitingTimer;
-        private Button btnStartTimer;
-        private Button btnStopTimer;
-        private Button btnResetTimer;
+        private Button BtnStartTimer;
+        private Button BtnStopTimer;
+        private Button BtnResetTimer;
     }
 }
