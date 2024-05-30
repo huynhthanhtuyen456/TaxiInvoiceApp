@@ -37,7 +37,7 @@ namespace TaxiInvoiceApp
             Company companyMeLinh = new()
             {
                 Name = "Me Linh Corporation",
-                TaxiPrice = new TaxiCompanyPrice()
+                TaxiPrice = new TaxiPrice()
                 {
                     OpenDoorPrice = 10000,
                     FirstKM2ThirstyPrice = 13600,
@@ -48,7 +48,7 @@ namespace TaxiInvoiceApp
             Company companyG7 = new()
             {
                 Name = "G7 Company",
-                TaxiPrice = new TaxiCompanyPrice()
+                TaxiPrice = new TaxiPrice()
                 {
                     OpenDoorPrice = 20000,
                     FirstKM2ThirstyPrice = 11500,
