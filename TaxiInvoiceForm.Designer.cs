@@ -90,6 +90,7 @@
             // 
             // ComboBoxCompany
             // 
+            ComboBoxCompany.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxCompany.FormattingEnabled = true;
             ComboBoxCompany.Location = new Point(103, 41);
             ComboBoxCompany.Name = "ComboBoxCompany";

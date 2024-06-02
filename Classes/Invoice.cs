@@ -13,7 +13,7 @@ namespace TaxiInvoiceApp.Classes
         private string? Number { get; set; }
         public DateTime ExportedDate = DateTime.Now;
         private Customer? Customer { get; set; }
-        protected float TaxRate = 0.2F;
+        protected float TaxRate = 0.08F;
     }
 
     public class TaxiInvoice : Invoice, ITaxInvoiceCalculation
